@@ -1,3 +1,5 @@
 import ProductDataProvider from "./ProductDataProvider";
+import CategoryDataProvider from "./CategoryDataProvider";
+import CartDataProvider from "./CartDataProvider";
 
-export { ProductDataProvider };
+export { ProductDataProvider, CategoryDataProvider, CartDataProvider };

@@ -1,14 +1,22 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ProductBoard from "./components/ProductBoard";
-import {ProductDataProvider} from "./provider"
+import {
+  CartDataProvider,
+  CategoryDataProvider,
+  ProductDataProvider,
+} from "./provider";
 
 const App = () => {
   return (
     <ProductDataProvider>
-      <Header />
-      <ProductBoard />
-      <Footer />
+      <CategoryDataProvider>
+        <CartDataProvider>
+          <Header />
+          <ProductBoard />
+          <Footer />
+        </CartDataProvider>
+      </CategoryDataProvider>
     </ProductDataProvider>
   );
 };

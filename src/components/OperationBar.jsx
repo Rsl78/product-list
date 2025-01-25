@@ -5,19 +5,14 @@ import SearchButton from "../ui/SearchButton";
 import SortButton from "../ui/SortButton";
 import FilterModal from "./FilterModal";
 import SortModal from "./SortModal";
-// import { useProduct } from "../hooks";
-// import { ProductContext } from "../context";
-
+import { CartContext } from "../context";
 
 const OperationBar = () => {
   const [showSortModal, setShowSortModal] = useState(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [term, setTerm] = useState("");
-  // const { loading, error, productData } = useContext(ProductContext)
 
-  // console.log("Product Data", productData);
-  // console.log("Loading", loading);
-  // console.log("Error", error);
+  const {cartData} = useContext(CartContext)
 
   console.log(term)
   return (
@@ -79,7 +74,7 @@ const OperationBar = () => {
             <a href="#" className="group -m-2 flex items-center p-2">
               <CartButton />
               <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                0
+                {cartData.length}
               </span>
               <span className="sr-only">items in cart, view bag</span>
             </a>
