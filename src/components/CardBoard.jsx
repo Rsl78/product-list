@@ -5,6 +5,7 @@ import { ProductContext } from "../context";
 
 const CardBoard = () => {
   const { loading, productData } = useContext(ProductContext);
+  console.log(productData);
   return (
     <div>
       <div className="bg-white">

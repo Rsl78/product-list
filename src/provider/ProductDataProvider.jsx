@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { ProductContext } from "../context";
 import { useProduct } from "../hooks";
 import PropTypes from "prop-types";
 
 const ProductDataProvider = ({ children }) => {
-  const { error, loading, productData } = useProduct();
+  const [order, setOrder]= useState("");
+  const [category, setCategory]= useState("");
+  const { error, loading, productData } = useProduct(false,order, category);
+
   return (
-    <ProductContext.Provider value={{ error, loading, productData }}>
+    <ProductContext.Provider value={{ error, loading, productData, setOrder, setCategory, order, category }}>
       {children}
     </ProductContext.Provider>
   );

@@ -33,7 +33,7 @@ const OperationBar = () => {
                 <SortButton />
               </button>
             </div>
-            {showSortModal && <SortModal />}
+            {showSortModal && <SortModal setShowSortModal={setShowSortModal} />}
           </div>
           <div className="relative inline-block text-left">
             <div>
@@ -66,7 +66,7 @@ const OperationBar = () => {
               aria-expanded="false"
               aria-autocomplete="list"
               value={term}
-              onChange={(e)=> setTerm(e.target.value)}
+              onChange={(e) => setTerm(e.target.value)}
               //   style="caret-color: rgb(107, 114, 128)"
             />
           </div>
