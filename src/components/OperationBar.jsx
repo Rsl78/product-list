@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import CartButton from "../ui/CartButton";
 import FilterButton from "../ui/FilterButton";
 import SearchButton from "../ui/SearchButton";
 import SortButton from "../ui/SortButton";
 import FilterModal from "./FilterModal";
 import SortModal from "./SortModal";
-import { useProduct } from "../hooks";
+// import { useProduct } from "../hooks";
+// import { ProductContext } from "../context";
 
 
 const OperationBar = () => {
   const [showSortModal, setShowSortModal] = useState(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [term, setTerm] = useState("");
-  // const [categories, setCategories] = useState([]);
-  const {loading , error, productData} = useProduct();
+  // const { loading, error, productData } = useContext(ProductContext)
 
-  console.log("Product Data", productData);
-  console.log("Loading", loading);
-  console.log("Error", error);
+  // console.log("Product Data", productData);
+  // console.log("Loading", loading);
+  // console.log("Error", error);
 
   console.log(term)
   return (

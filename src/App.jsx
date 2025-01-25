@@ -1,14 +1,15 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ProductBoard from "./components/ProductBoard";
+import {ProductDataProvider} from "./provider"
 
 const App = () => {
   return (
-    <div>
-      <Header/>
-      <ProductBoard/>
-      <Footer/>
-    </div>
+    <ProductDataProvider>
+      <Header />
+      <ProductBoard />
+      <Footer />
+    </ProductDataProvider>
   );
 };
 
