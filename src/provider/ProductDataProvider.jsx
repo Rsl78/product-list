@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ProductContext } from "../context";
-import { useProduct } from "../hooks";
+import { useProduct, useDebounce } from "../hooks";
 import PropTypes from "prop-types";
 
 const ProductDataProvider = ({ children }) => {
@@ -9,8 +9,19 @@ const ProductDataProvider = ({ children }) => {
   const { error, loading, productData } = useProduct(false, filterCategory);
 
   const [sortOrder, setSortOrder] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const sortedData = [...productData]
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
+
+  
+
+  let sortedData = [...productData]
+  if (debouncedSearchTerm) {
+    sortedData = sortedData.filter((product) =>
+      product.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+    );
+  }
+  
   if (sortOrder === "asc") {
     sortedData.sort((a, b) => a.price - b.price);
   } else if (sortOrder === "desc") {
@@ -28,6 +39,8 @@ const ProductDataProvider = ({ children }) => {
         selectedCategory,
         setSelectedCategory,
         setSortOrder,
+        searchTerm,
+        setSearchTerm,
       }}
     >
       {children}

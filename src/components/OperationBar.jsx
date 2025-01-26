@@ -5,16 +5,17 @@ import SearchButton from "../ui/SearchButton";
 import SortButton from "../ui/SortButton";
 import FilterModal from "./FilterModal";
 import SortModal from "./SortModal";
-import { CartContext } from "../context";
+import { CartContext, ProductContext } from "../context";
 
 const OperationBar = () => {
   const [showSortModal, setShowSortModal] = useState(false);
   const [showFilterModal, setShowFilterModal] = useState(false);
-  const [term, setTerm] = useState("");
+  // const [term, setTerm] = useState("");
 
-  const {cartData} = useContext(CartContext)
+  const { cartData } = useContext(CartContext);
+  const { searchTerm, setSearchTerm } = useContext(ProductContext);
 
-  console.log(term)
+  console.log(searchTerm)
   return (
     <div className="mt-10">
       <div className="flex justify-between relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
@@ -33,9 +34,7 @@ const OperationBar = () => {
                 <SortButton />
               </button>
             </div>
-            {showSortModal && (
-              <SortModal setShowSortModal={setShowSortModal}/>
-            )}
+            {showSortModal && <SortModal setShowSortModal={setShowSortModal} />}
           </div>
           <div className="relative inline-block text-left">
             <div>
@@ -69,8 +68,8 @@ const OperationBar = () => {
               type="text"
               aria-expanded="false"
               aria-autocomplete="list"
-              value={term}
-              onChange={(e) => setTerm(e.target.value)}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               //   style="caret-color: rgb(107, 114, 128)"
             />
           </div>
