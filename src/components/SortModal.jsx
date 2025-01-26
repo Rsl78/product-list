@@ -1,14 +1,8 @@
-import { useContext } from "react";
-import { ProductContext } from "../context";
+
 import PropTypes from "prop-types";
 
-const SortModal = ({ setShowSortModal }) => {
-  const { setOrder } = useContext(ProductContext);
+const SortModal = () => {
 
-  const handleOrder = (sortOrder) => {
-    setOrder(sortOrder);
-    setShowSortModal(false);
-  };
 
   return (
     <div
@@ -24,7 +18,6 @@ const SortModal = ({ setShowSortModal }) => {
           role="menuitem"
           tabIndex="-1"
           //   onClick="toggleDropdown()"
-          onClick={() => handleOrder("asc")}
           id="menu-item-0"
         >
           Low to High
@@ -34,7 +27,6 @@ const SortModal = ({ setShowSortModal }) => {
           className="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-all"
           role="menuitem"
           tabIndex="-1"
-          onClick={() => handleOrder("desc")}
           id="menu-item-0"
         >
           High to Low

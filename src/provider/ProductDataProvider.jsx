@@ -4,19 +4,32 @@ import { useProduct } from "../hooks";
 import PropTypes from "prop-types";
 
 const ProductDataProvider = ({ children }) => {
-  const [order, setOrder]= useState("");
-  const [category, setCategory]= useState("");
-  const { error, loading, productData } = useProduct(false,order, category);
+  // const [order, setOrder] = useState("");
+  const [filterCategory, setFilterCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const { error, loading, productData } = useProduct(false, filterCategory);
+
+  
 
   return (
-    <ProductContext.Provider value={{ error, loading, productData, setOrder, setCategory, order, category }}>
+    <ProductContext.Provider
+      value={{
+        error,
+        loading,
+        productData,
+        setFilterCategory,
+        filterCategory,
+        selectedCategory,
+        setSelectedCategory,
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );
 };
 
 ProductDataProvider.propTypes = {
-    children: PropTypes.node,
-}
+  children: PropTypes.node,
+};
 
 export default ProductDataProvider;

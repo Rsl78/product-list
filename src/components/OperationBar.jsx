@@ -33,7 +33,7 @@ const OperationBar = () => {
                 <SortButton />
               </button>
             </div>
-            {showSortModal && <SortModal setShowSortModal={setShowSortModal} />}
+            {showSortModal && <SortModal />}
           </div>
           <div className="relative inline-block text-left">
             <div>
@@ -49,7 +49,9 @@ const OperationBar = () => {
                 <FilterButton />
               </button>
             </div>
-            {showFilterModal && <FilterModal />}
+            {showFilterModal && (
+              <FilterModal setShowFilterModal={setShowFilterModal} />
+            )}
           </div>
         </div>
 
