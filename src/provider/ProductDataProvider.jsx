@@ -8,17 +8,26 @@ const ProductDataProvider = ({ children }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const { error, loading, productData } = useProduct(false, filterCategory);
 
-  
+  const [sortOrder, setSortOrder] = useState("");
+
+  const sortedData = [...productData]
+  if (sortOrder === "asc") {
+    sortedData.sort((a, b) => a.price - b.price);
+  } else if (sortOrder === "desc") {
+    sortedData.sort((a, b) => b.price - a.price);
+  }
+
   return (
     <ProductContext.Provider
       value={{
         error,
         loading,
-        productData,
+        productData: sortedData,
         setFilterCategory,
         filterCategory,
         selectedCategory,
         setSelectedCategory,
+        setSortOrder,
       }}
     >
       {children}
